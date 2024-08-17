@@ -1,2 +1,3 @@
 # practise-code
-setting up git
+easy python projects and code with insightfull coments
+
