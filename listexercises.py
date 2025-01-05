@@ -88,3 +88,57 @@ for pizza in fav_pizzas:#for every pizza in the list,the program prints the pizz
     print(pizza)
     print(f"I like {pizza}")
 print(f"i really love pizza\n")
+
+#LIST COMPREHENSIONS EXERCISE
+#operation make code shorter >< - no need to append 
+#syntax -listname = [expression,loop that feeds expression values] -no colon at end
+#counting to twenty
+count =[value for value in range(1,21)]#fyi the variable value cant be referenced outside the list
+print(count)
+#Make a list for numbers from 1-1 mil
+One_Mil =[value for value in range(1,1000001)]
+#print (One_Mil)
+print(sum(One_Mil))
+print(min(One_Mil))
+print(max(One_Mil))
+
+#odd numbers from 1-20
+#only way is to use the step size function in ranges
+odd_numbers =[odd_number for odd_number in range(1,20,2)]#NB both the expression and variable should be identical
+print(odd_numbers)
+
+#make a list of a multiple of 3's from 3-30
+threes =[multiples for multiples in range(3,30,3)]
+print(threes)
+
+#cubes for the first 10 cubes
+cubes =[number**3 for number in range(1,11)]
+print(cubes)
+
+#slices
+friends_pizza = fav_pizzas[:]
+friends_pizza.append("marshmello")
+fav_pizzas.append("salmon")
+print(fav_pizzas,friends_pizza)
+print(f"my fave pizzas are{fav_pizzas[1:3]}")
+
+#Tuple exercise
+resturant_menu =("pasta","lobster","lasagna","porridge","meatloaf")
+for item in resturant_menu:
+    print(f"{item} is delicious")
+
+#resturant_menu[0] = "peperroni"#error
+resturant_menu =("pasta","shrimp","lasagna","salad","meatloaf")
+for item in resturant_menu:
+    print(f"{item} is delicious")
+
+#additional notes (:
+"""
+Python styling conventions
+1.indentation -4 spaces per indent and set tab key to space not insert tabs
+2.Line length -less than 80 characters
+3. Blank lines/spacing - to separate/group parts of the program - only affects readability
+
+To edit the styling conventions you must write a PEP(python enhancement proposal)
+
+"""

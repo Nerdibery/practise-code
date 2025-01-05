@@ -1,3 +1,6 @@
+#author - Nerdybochaberi
+#disclaimer, notes and exercises are derived from python crash course by Eric Matthes 
+
 #application is matrix keypad, randomised gambling game
 
 #A list is a collection of items in a particular order.
@@ -10,7 +13,7 @@ boys =[]#empty list,you can add elements
 
 print(girls)#prints the entire list
 
-#accessing individual elements in lists
+#accessing INDIVIDUAL ELEMENTS in lists- its using index
 #method 1 - using element index
 print(girls[0])#prints the first name in the list. syntax is listname[index/position]
 #You can also use the string methods on any element in this list.(.title,upper,lower,strip)
@@ -146,3 +149,149 @@ for i in musicians:#loops for every element (represented by i) in the list
 
 #Some errors are much harder to resolve, even when the eventual fix only involves a single character.
 #Don’t feel bad when a small fix takes a long time to find; you are absolutely not alone in this experience.
+
+
+#Lists are ideal for storing sets of numbers(game scores,data)
+#tools for using lists
+#1 range function
+#Python’s range() function makes it easy to generate a series of numbers
+
+for value in range(1,5):#range term is specifically for numerical values
+    print(value)#python only prints 1-4 due to its off by one behaviour
+    #python terminates before the second number in the range function 
+#therefore to print 1-5 the function is range(1,6)
+
+#You can also pass range() only one argument, and it will start the sequence of numbers at 0.
+for value in range(6):
+    print (value)
+
+#We can also use the range() function to tell Python to skip numbers in a given range. If you pass a third argument to 
+# range(), Python uses that value as a step size when generating numbers.
+for i in (range(2,11,2)):#2 is the step size - this prints even numbers from 1-10
+    print (i)
+for value in range(3,13,3):#3 is the step size and this prints multiples of 3
+    print(value)
+
+#making a list of squares
+squares =[] #make an empty list
+for value in range(2,11):#from 2-10
+    #can just do squares.append(value**2) to ommit the last 2 steps
+    value = value**2 #square each number from 2-10 and overwrite the original value
+    squares.append(value)#add each square value to the list
+print(squares)#after the loop is done running it prints the list
+
+#SIMPLE STATISTICS WITH LISTS <3
+#you can use functions to find min max in lists
+digits = []
+for value in range(1,11):
+    digits.append(value)
+print(min(digits))#prints the smallest digit in the list
+print(max(digits))#prints the largest digit in the list
+#sort can be used to perform median no?
+print(sum(digits))#outputs the sum of the digits in the list
+#works for lists of all sizes
+
+#list comprehensions (compresses code to be shorter(:))
+#components of list comprehensions(for loop)
+#sample, the squares list but SHORTER
+squares =[value**2 for value in range(1,11)]
+print(squares)
+#SYNTAX - name of list =[expression of values to be stored in list(value**2)loop for values you wanna feed into the expression]
+#this is basically assigning the current value in the for loop to the list
+#NB_ NO COLON IS USED AT THE END OF THE FOR STATEMENT
+
+
+#WORKING WITH PART OF A LIST -index always
+
+#slice - specific group of items in a list SYMBOL - listname[:]
+#To make a slice, you specify the index of the first and last elements you want to work with
+#Python stops one item before the second index you specify
+
+#Example
+players =["sam","melissa","samba","kuromi","kitty"]
+print(players[0:3])#0:3 is 0-3 and only prints 3 indexes
+print(players[1:4])
+print(players[:4])#same as printing from 0-4. Starts from the first index
+print(players[2:])#prints from index two to the last item
+print(players[-3:])#prints the last 3 things on the list
+
+# : is good for long lists
+#if you want a step number,just put 3 variables
+print(players[0:4:2])#skips numbers by 2
+
+#looping through a slice
+#You can use a slice in a for loop if you want to loop through a subset of the elements in a list
+
+for player in players[:3]:
+    print (player)
+
+#uses of slices -when you’re creating a game, you could add a
+#player’s final score to a list every time that player finishes
+#playing. You could then get a player’s top three scores by
+#sorting the list in decreasing order and taking a slice that
+#includes just the first three scores
+
+#copying a list*****
+"""
+ making an entirely new list based on the first list.
+ To copy a list, you can make a slice that includes the
+entire original list by omitting the first index and the second
+index ([:]). This tells Python to make a slice that starts at
+the first item and ends with the last item, producing a copy
+of the entire list.
+"""
+thislist = ["apple", "banana", "cherry"]
+my_list =thislist[:]#slice operator method
+my_list.append("candy")
+thislist.append("jello")
+print(thislist,my_list)
+
+#functions method
+thelist = ["meth", "weed", "juice","coke"]
+mylist = thelist.copy()
+print(mylist)
+
+thylist = ["app", "ban", "che"]
+MyList = list(thylist)
+print(MyList)
+
+#TUPLES
+#difference btwn a tuple and a list?
+#lists store data that changes/modified during program excecution 
+#lists use []
+#Tuples contain data that stays constant/immutable 
+# - cant be changed but can be overwritten
+#Tuples use ()
+
+#Once you define a tuple, you can access individual elements 
+# by using each item’s index, just as you would for a list
+#use cases: the size of a rectangle
+dimentions =(200,50)#example of a tuple
+print(dimentions[0])#acessing an element
+print(dimentions[1])
+#dimentions[0]=250 #returns error coz tuples cant be changed
+
+"""
+Tuples are technically defined by the presence of a
+comma; the parentheses make them look neater and
+more readable. If you want to define a tuple with one
+element, you need to include a trailing comma:
+ my_t = (3,)
+It doesnt often make sense to build a tuple with one
+element, but this can happen when tuples are
+generated automatically.
+
+"""
+#looping through values in a tuple
+for value in dimentions:
+    print (value) 
+
+#writing over a tuple, since we cant add,remove or change existing data
+for value in dimentions:
+    print(f"original dimention {value}")
+
+dimentions =(100,2000)
+for value in dimentions:
+    print(f"new dimention {value}")
+
+#NB:tuples are simpler data structures than list
